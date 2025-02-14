@@ -1,4 +1,4 @@
-interface BaseComponentArgs {
+export interface BaseComponentArgs {
     className?: string,
     id?: string,
     children?: HTMLElement[] 
@@ -47,20 +47,22 @@ export default class BaseComponent extends HTMLElement {
     protected onMount() {}
 
     private checkStyles() {
-        const exist = Boolean(document.getElementById(`${this.name}-styles`))
+        const tagName = `${this.name}-styles`
+        const exist = Boolean(document.getElementById(tagName))
         if (exist) return
 
         const newTag = document.createElement('style')
         newTag.innerHTML = this.styles
+        newTag.id = tagName
         document.head.appendChild(newTag)
     }
 
     private saveSlots() {
-        const slots = this.querySelectorAll("slot")
+        const slots = [...this.querySelectorAll("slot")]
         if (!slots) return
 
         const newSlots = new Map<string, HTMLElement>()
-        const entries = [...slots].forEach((slot) => newSlots.set(slot.name, slot))
+        slots.forEach((slot) => newSlots.set(slot.name, slot))
         this.slots = newSlots;   
     }
 
