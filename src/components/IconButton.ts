@@ -43,12 +43,6 @@ export default class IconButton extends BaseComponent {
         const iconElement = [...this.getElementsByClassName("icon-src")].pop()
         iconElement?.setAttribute('href', `${this.svgPath}#${iconName}`)
     }
-
-    public setText(text: string) {
-        const span = [...this.getElementsByClassName('button-text')].pop();
-        (span as HTMLSpanElement).innerHTML = text;
-        this.text = text;
-    }
 }
 
 customElements.define('icon-button', IconButton)

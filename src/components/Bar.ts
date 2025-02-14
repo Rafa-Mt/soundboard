@@ -6,13 +6,13 @@ export default class Bar extends BaseComponent {
     protected name = 'bar'
     protected styles = styles; 
     protected template = /*html*/`
-        <div class="row row-right">
+        <div class="row row-left">
             <slot name="right-column"/>
         </div>
         <div class="row row-center">
             <slot name="center-column"/>
         </div>
-        <div class="row row-left">
+        <div class="row row-right">
             <slot name="left-column"/>
         </div>
     `
@@ -32,6 +32,8 @@ export default class Bar extends BaseComponent {
             case 'center': col = this.centerColumn; break;
             case 'right': col = this.rightColumn; break;
         }
+
+        console.log("appending", children, "to", col)
 
         if ((col?.children.length as number) + children.length > 10) {
             console.warn("Row cannot have more than 10 items")

@@ -28,7 +28,7 @@ const styles = /*inline-css*/`
     }
 
     .row-right {
-      justify-content: flex-start;
+      justify-content: flex-end;
     }
 
     .row-center {
@@ -36,7 +36,7 @@ const styles = /*inline-css*/`
     }
 
     .row-left {
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
     /* Ensure content inside slots is properly aligned */
